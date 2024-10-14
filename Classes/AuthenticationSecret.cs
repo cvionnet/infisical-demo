@@ -1,6 +1,6 @@
 ﻿namespace infisical_demo;
 
-internal class AuthenticationSecret
+public class AuthenticationSecret
 {
     public string ServerUrl { get; set; }
     public string ClientId { get; set; }

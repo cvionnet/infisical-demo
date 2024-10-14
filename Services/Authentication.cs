@@ -1,10 +1,10 @@
 ﻿using Infisical.Sdk;
 
-namespace infisical_demo.Helpers;
+namespace infisical_demo.Services;
 
-internal static class AuthenticationHelper
+public class Authentication : IAuthentication
 {
-    internal static ClientSettings InitializeClientSettings(AuthenticationSecret auth)
+    public ClientSettings InitializeClientSettings(AuthenticationSecret auth)
     {
         ArgumentNullException.ThrowIfNull(auth);
 
@@ -23,4 +23,9 @@ internal static class AuthenticationHelper
 
         return clientSettings;
     }
+}
+
+public interface IAuthentication
+{
+    ClientSettings InitializeClientSettings(AuthenticationSecret auth);
 }
