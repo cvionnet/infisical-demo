@@ -6,6 +6,9 @@ internal static class SecretsHelper
 {
     internal static GetSecretResponseSecret GetSecret(SecretResponse secretResponse, string secretName, string path = "/")
     {
+        ArgumentNullException.ThrowIfNull(secretResponse);
+        ArgumentException.ThrowIfNullOrWhiteSpace(secretName);
+
         var secretOptions = new GetSecretOptions
         {
             ProjectId = secretResponse.Auth.ProjectId,

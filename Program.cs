@@ -3,7 +3,7 @@ using infisical_demo;
 using infisical_demo.Helpers;
 using Microsoft.Extensions.Configuration;
 
-var environment = Environment.GetEnvironmentVariable("CORE_ENVIRONMENT");
+var environment = Environment.GetEnvironmentVariable("CORE_ENVIRONMENT") ?? "development";
 
 var builder = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -17,8 +17,6 @@ var authentication = new AuthenticationSecret
     ClientSecret = builder["Infisical:ClientSecret"],
     ProjectId = builder["Infisical:ProjectId"],
 };
-
-// ---------------------------
 
 ClientSettings clientSettings = AuthenticationHelper.InitializeClientSettings(authentication);
 SecretResponse secretResponse = new SecretResponse

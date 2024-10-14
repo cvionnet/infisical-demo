@@ -6,6 +6,8 @@ internal static class AuthenticationHelper
 {
     internal static ClientSettings InitializeClientSettings(AuthenticationSecret auth)
     {
+        ArgumentNullException.ThrowIfNull(auth);
+
         var clientSettings = new ClientSettings
         {
             SiteUrl = auth.ServerUrl,
