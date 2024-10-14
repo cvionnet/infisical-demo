@@ -3,13 +3,13 @@
     "Development": {
       "commandName": "Project",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "CORE_ENVIRONMENT": "dev"
       }
     },
     "Production": {
       "commandName": "Project",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Production"
+        "CORE_ENVIRONMENT": "prod"
       }
     }
   }
