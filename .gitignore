@@ -1,2 +1,6 @@
 
 .vs/
+
+test/infisical-demo-tests/bin/
+
+test/infisical-demo-tests/obj/
