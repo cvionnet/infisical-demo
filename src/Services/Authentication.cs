@@ -7,6 +7,9 @@ public class Authentication : IAuthentication
     public ClientSettings InitializeClientSettings(AuthenticationSecret auth)
     {
         ArgumentNullException.ThrowIfNull(auth);
+        ArgumentException.ThrowIfNullOrWhiteSpace(auth.ServerUrl);
+        ArgumentException.ThrowIfNullOrWhiteSpace(auth.ClientId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(auth.ClientSecret);
 
         var clientSettings = new ClientSettings
         {
