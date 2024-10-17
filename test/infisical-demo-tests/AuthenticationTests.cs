@@ -1,5 +1,6 @@
 using FluentAssertions;
 using infisical_demo;
+using infisical_demo.Classes;
 using infisical_demo.Services;
 
 namespace infisical_demo_tests;

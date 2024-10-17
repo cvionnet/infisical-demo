@@ -1,4 +1,5 @@
-﻿using Infisical.Sdk;
+﻿using infisical_demo.Classes;
+using Infisical.Sdk;
 
 namespace infisical_demo.Services;
 

@@ -1,4 +1,5 @@
-﻿using Infisical.Sdk;
+﻿using infisical_demo.Classes;
+using Infisical.Sdk;
 using infisical_demo.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,17 +19,21 @@ internal class Program
 
         var serviceProvider = ConfigureServices(builder, environment);
 
-        var authenticationService = serviceProvider.GetService<IAuthentication>();
+        serviceProvider.GetService<IAuthentication>();
         var secretsService = serviceProvider.GetService<ISecrets>();
 
         AuthenticationSecret authenticationSecret = SetupAuthenticationSecret(builder);
 
         try
         {
-            var secret1 = secretsService?.GetSecret(authenticationSecret.ProjectId, "ANOTHER_LOGIN");
+            if (authenticationSecret.ProjectId == null) return;
+
+            var secret1 =
+                secretsService?.GetSecret(authenticationSecret.ProjectId, "ANOTHER_LOGIN");
             Console.WriteLine($"Value of {secret1?.SecretKey} is: \n{secret1?.SecretValue}\n\n");
 
-            var secret2 = secretsService?.GetSecret(authenticationSecret.ProjectId, "CONNECTION_STRING", "/client1");
+            var secret2 =
+                secretsService?.GetSecret(authenticationSecret.ProjectId, "CONNECTION_STRING", "/client1");
             Console.WriteLine($"Value of {secret2?.SecretKey} is: \n{secret2?.SecretValue}\n\n");
         }
         catch (InfisicalException ex)
@@ -46,7 +51,7 @@ internal class Program
             var authenticationService = provider.GetService<IAuthentication>();
 
             AuthenticationSecret authentication = SetupAuthenticationSecret(builder);
-            ClientSettings clientSettings = authenticationService.InitializeClientSettings(authentication);
+            ClientSettings clientSettings = authenticationService?.InitializeClientSettings(authentication)!;
             var client = new InfisicalClient(clientSettings);
 
             return new Secrets(environment, client);

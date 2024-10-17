@@ -1,9 +1,9 @@
-﻿namespace infisical_demo;
+﻿namespace infisical_demo.Classes;
 
 public class AuthenticationSecret
 {
-    public string ServerUrl { get; set; }
-    public string ClientId { get; set; }
-    public string ClientSecret { get; set; }
-    public string ProjectId { get; set; }
+    public string? ServerUrl { get; init; }
+    public string? ClientId { get; init; }
+    public string? ClientSecret { get; init; }
+    public string? ProjectId { get; init; }
 }
